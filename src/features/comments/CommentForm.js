@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, Label, FormGroup } from "reactstrap";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { validateCommentForm } from "../../utils/validateCommentForm";
+import { validateCommentForm } from '../../utils/validateCommentForm'
 
 
 const CommentForm = ({ campsiteId }) => {
-    const { modalOpen, setModalOpen } = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
 
     const handleSubmit = (values) => {
         const comment = {
@@ -44,20 +44,20 @@ const CommentForm = ({ campsiteId }) => {
                                     Rating
                                 </Label>
                                 <Field
-                                    name="rating"
-                                    as="select"
-                                    className="form-control"
+                                    name='rating'
+                                    as='select'
+                                    className='form-control'
                                 >
-                                    
+                                    <option>Select...</option>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
-                                    <option selected='selected'>5</option>
+                                    <option>5</option>
                                 </Field>
                                 <ErrorMessage name='rating'>
-                            {(msg) => <p className='text-danger'>{msg}</p>}
-                        </ErrorMessage> 
+                                    {(msg) => <p className='text-danger'>{msg}</p>}
+                                </ErrorMessage>
                             </FormGroup>
 
                             <FormGroup>
@@ -68,9 +68,10 @@ const CommentForm = ({ campsiteId }) => {
                                     className="form-control"
                                 />
                                 <ErrorMessage name='author'>
-                            {(msg) => <p className='text-danger'>{msg}</p>}
-                        </ErrorMessage> 
+                                    {(msg) => <p className='text-danger'>{msg}</p>}
+                                </ErrorMessage>
                             </FormGroup>
+                            
                             <FormGroup>
                                 <Label htmlFor="commentText">Comment</Label>
                                 <Field
