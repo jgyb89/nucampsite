@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { Col, Row } from "reactstrap";
 import Partner from "./Partner";
 import { selectAllPartners } from "./partnersSlice";
-import Loading from "../ui/Loading"; // Importing the Loading component
-import Error from "../ui/Error"; // Importing the Error component
+import Error from '../../components/Error'; // Import the Error component
+import Loading from '../../components/Loading'; // Import the Loading component
 
 const PartnersList = () => {
     // Selecting state data for partners and their loading/error status
