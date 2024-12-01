@@ -3,9 +3,23 @@ import { Col } from 'reactstrap';
 import Comment from './Comment';
 import CommentForm from './CommentForm'
 import { selectCommentsByCampsiteId } from './commentsSlice';
+import Error from '../../components/Error';
+import Loading from '../../components/Loading';
 
 const CommentsList = ({ campsiteId }) => {
     const Comments = useSelector(selectCommentsByCampsiteId(campsiteId));
+    const isLoading = useSelector((state) => state.comments.isLoading); // Get loading status from state
+    const errMsg = useSelector((state) => state.comments.errMsg); // Get error message from state
+
+    if (isLoading) {
+        return <Loading />;
+    }
+
+    // Conditional rendering for error state
+    if (errMsg) {
+        return  <Error errMsg={errMsg} />;
+    }
+
 
     if (Comments && Comments.length > 0) {
         return (
