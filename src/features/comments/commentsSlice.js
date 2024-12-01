@@ -1,37 +1,35 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { baseUrl } from '../../app/shared/baseUrl';
-import { mapImageURL } from '../../utils/mapImageURL';
 
 export const fetchComments = createAsyncThunk(
     'comments/fetchComments',
     async () => {
         const response = await fetch(baseUrl + 'comments');
         if (!response.ok) {
-            return Promise.reject('Unble to fetch, status: ' + response.status)
+            return Promise.reject('Unable to fetch, status: ' + response.status);
         }
         const data = await response.json();
-        return data; 
+        return data;
     }
-)
+);
 
 export const postComment = createAsyncThunk(
     'comments/postComment',
-    async (comment, {dispatch}) => {
+    async (comment, { dispatch }) => {
         const response = await fetch(baseUrl + 'comments', {
             method: 'POST',
             body: JSON.stringify(comment),
             headers: {
-                'Content-type' : 'application/json'
+                'Content-Type': 'application/json'
             }
         });
         if (!response.ok) {
-            return Promise.reject(response.status)
+            return Promise.reject(response.status);
         }
         const data = await response.json();
-        return data;
-        dispatch(addComment(data)); 
+        dispatch(addComment(data));
     }
-)
+);
 
 const initialState = {
     commentsArray: [],
@@ -69,8 +67,8 @@ const commentsSlice = createSlice({
         [postComment.rejected]: (state, action) => {
             alert(
                 'Your comment could not be posted\nError: ' +
-                (action.error ? action.error.message : 'Fetch failed')
-                );
+                    (action.error ? action.error.message : 'Fetch failed')
+            );
         }
     }
 });
