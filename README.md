@@ -1,9 +1,5 @@
 Updated React nucampsite repo with hooks, function components, and RTK
 
-Instructors:
-
-Use:
-
 ### `npm ci`
 
 to clean install the node_modules folder in any branch. Clean install means it will use the existing package-lock.json file and won't alter it.
@@ -23,3 +19,6 @@ To checkout and switch to a branch. You can use the files in that branch as an a
 Please do not share this repository with any students. It is for instructors' use only.
 
 If you find any issues with this repository, contact Nucamp's Director of Curriculum.
+
+### `Live Demo`
+https://jg-react-nucampsite.netlify.app/
